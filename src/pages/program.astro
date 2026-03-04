@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Программа" description="Программа AI-NATIVE BOOTCAMP — 6 недель практики">
+  <Header />
+  <main style="max-width: 720px; margin: 0 auto; padding: 4rem 2rem; min-height: calc(100vh - 200px);">
+    <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;">Программа</h1>
+    <p style="color: var(--text-muted); margin-bottom: 3rem;">
+      6 недель. От идеи до работающего продукта с AI в каждой стадии.
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <section style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px;">
+        <span class="mono" style="color: var(--accent); font-size: 0.85rem;">Неделя 1–2</span>
+        <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">Идея и валидация</h3>
+        <p style="margin: 0; color: var(--text-muted);">Формулировка проблемы, research с AI, первые гипотезы и MVP-сценарии.</p>
+      </section>
+      <section style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px;">
+        <span class="mono" style="color: var(--accent); font-size: 0.85rem;">Неделя 3–4</span>
+        <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">Прототип и разработка</h3>
+        <p style="margin: 0; color: var(--text-muted);">AI-ассистированная разработка, быстрые итерации, сбор обратной связи.</p>
+      </section>
+      <section style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px;">
+        <span class="mono" style="color: var(--accent); font-size: 0.85rem;">Неделя 5–6</span>
+        <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">Релиз и рост</h3>
+        <p style="margin: 0; color: var(--text-muted);">Деплой, первые пользователи, метрики, план масштабирования.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

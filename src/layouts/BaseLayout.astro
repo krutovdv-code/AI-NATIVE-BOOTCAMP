@@ -1,0 +1,73 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "AI-NATIVE BOOTCAMP — интенсив по разработке продуктов с AI" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title} | AI-NATIVE BOOTCAMP</title>
+    <style is:global>
+      :root {
+        --bg: #0a0a0b;
+        --surface: #141416;
+        --text: #f4f4f5;
+        --text-muted: #71717a;
+        --accent: #22d3ee;
+        --accent-dim: #0891b2;
+        --border: #27272a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Syne", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      h1, h2, h3 {
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

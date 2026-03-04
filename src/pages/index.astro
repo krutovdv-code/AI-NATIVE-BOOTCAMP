@@ -1,0 +1,469 @@
+---
+// Первый лендинг — AI & Engineering Future Webinar (на основе webinar-landing)
+---
+
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI &amp; Engineering Future | Live Webinar</title>
+    
+    <script is:inline src="https://cdn.tailwindcss.com/3.4.17"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <script is:inline>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#f5f5f0',
+                        text: '#0a0a0f',
+                        accent: '#f5a623',
+                        border: 'rgba(232, 232, 224, 0.15)'
+                    },
+                    fontFamily: {
+                        display: ['Roboto Condensed', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style is:global>
+        :root { --cursor-color: #f5a623; }
+        
+        body {
+            background-color: #f5f5f0;
+            color: #0a0a0f;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-display, h1, h2, h3, h4, button {
+            font-family: 'Roboto Condensed', sans-serif !important;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum" 1, "kern" 1;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        * { border-radius: 0 !important; }
+
+        ::selection {
+            background-color: #0a0a0f;
+            color: #f5f5f0;
+        }
+
+        .reveal-text span {
+            opacity: 0;
+            transform: translateY(10px);
+            display: inline-block;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .reveal-text span.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse-dot {
+            animation: pulse-amber 2s infinite;
+        }
+
+        @keyframes pulse-amber {
+            0% { box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(245, 166, 35, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 166, 35, 0); }
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .font-display, h1, h2, h3, h4 {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum" 1;
+        }
+    </style>
+</head>
+<body class="font-mono text-text">
+
+    <div class="fixed top-0 left-0 w-full z-50 border-b border-black/10 bg-[#f5f5f0]/95 backdrop-blur-sm">
+        <div class="max-w-[1440px] mx-auto px-6 h-12 flex items-center justify-between text-xs tracking-widest uppercase">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-[#f5a623] pulse-dot inline-block"></span>
+                <img src="data:image/jpeg;base64,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" alt="Nation AI" class="h-6 w-auto brightness-0"></div>
+            <div class="hidden md:flex gap-8">
+                <span>MSK 19:00</span>
+                <span>// FEB 15</span>
+            </div>
+            <div id="seats-ticker" class="text-black/50">
+                <span id="seats-count" class="text-[#f5a623] font-bold">42</span> МЕСТ ОСТАЛОСЬ
+            </div>
+        </div>
+    </div>
+
+    <main class="w-full max-w-[1440px] mx-auto pt-24">
+
+        <section class="min-h-[85vh] px-6 flex flex-col justify-center border-b border-black/10 pb-20 relative">
+            <div class="absolute top-10 right-6 text-xs text-black/20 hidden md:block">
+                SYSTEM: ENGINEERING_MARKET_V2.0<br>
+                STATUS: UNSTABLE
+            </div>
+
+            <div class="max-w-5xl">
+                <h1 class="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] uppercase tracking-tighter mb-12 reveal-text" id="hero-headline">
+                    Международный банк сократил 250 разработчиков за месяц.<br>
+                    Ты следующий?<br>
+                    Или останешься?
+                </h1>
+                
+                <div class="grid md:grid-cols-12 gap-8 border-l-2 border-[#f5a623] pl-6 md:pl-8 fade-in-section">
+                    <div class="md:col-span-8">
+                        <p class="text-lg md:text-xl text-black/70 leading-relaxed mb-8">
+                            <span class="text-[#f5a623]">//</span> Живой разбор с ведущими инженерами Google, Яндекса и Сбера: какие AI‑навыки отделяют тех, кого оставляют, от тех, кого сокращают.
+                        </p>
+                        <a href="#register" class="inline-block bg-[#f5a623] text-[#0a0a0f] px-8 py-4 font-display text-xl uppercase tracking-wide hover:bg-[#0a0a0f] hover:text-[#f5f5f0] transition-colors duration-300">
+                            Зарезервировать место
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 border-b border-black/10 fade-in-section">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-2 text-black/20 font-display text-6xl">01</div>
+                <div class="md:col-span-10">
+                    <h2 class="font-display text-4xl md:text-5xl uppercase mb-12 tracking-tight">
+                        Сокращают не худших.<br>
+                        <span class="text-[#f5a623]">Сокращают тех, кого проще заменить.</span>
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-16">
+                        <div>
+                            <p class="text-black/60 mb-6 leading-relaxed">
+                                Компании наращивают производительность без роста штата. Разработчики с AI закрывают задачи на 55% быстрее — там, где работали 10 инженеров, теперь достаточно 6.
+                            </p>
+                            <p class="text-black/60 leading-relaxed">
+                                82% разработчиков уже используют AI‑инструменты, но несистемно. Вопрос не в том, используешь ли ты AI. Вопрос — делает ли тебя AI ценнее, чем команда, или делает команду дешевле без тебя.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="border border-black/10 p-6 relative">
+                                <div class="absolute top-2 right-2 text-[#f5a623] text-xs">[EFFICIENCY]</div>
+                                <div class="font-display text-6xl text-[#0a0a0f] mb-2 counter" data-target="55" data-suffix="%">0%</div>
+                                <div class="text-xs uppercase tracking-widest text-black/40">Рост скорости</div>
+                            </div>
+                            <div class="border border-black/10 p-6 relative">
+                                <div class="absolute top-2 right-2 text-[#f5a623] text-xs">[ADOPTION]</div>
+                                <div class="font-display text-6xl text-[#0a0a0f] mb-2 counter" data-target="82" data-suffix="%">0%</div>
+                                <div class="text-xs uppercase tracking-widest text-black/40">Используют AI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 border-b border-black/10 fade-in-section">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-2 text-black/20 font-display text-6xl">02</div>
+                <div class="md:col-span-10">
+                    <h2 class="font-display text-4xl md:text-5xl uppercase mb-12 tracking-tight">
+                        Роли сжимаются. <br>И это только начало.
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-black/5 p-8">
+                            <div class="text-[#f5a623] font-display text-5xl mb-4 counter" data-target="80" data-suffix="%">0%</div>
+                            <p class="text-sm text-black/50">Инженеров будут вынуждены переквалифицироваться к 2027 году (Gartner).</p>
+                        </div>
+                        <div class="bg-black/5 p-8">
+                            <div class="text-[#f5a623] font-display text-5xl mb-4 counter" data-target="42" data-suffix="%">0%</div>
+                            <p class="text-sm text-black/50">Кода уже пишется с участием AI агентов и копилотов.</p>
+                        </div>
+                        <div class="bg-black/5 p-8">
+                            <div class="text-[#f5a623] font-display text-5xl mb-4 counter" data-target="10" data-suffix="x">0x</div>
+                            <p class="text-sm text-black/50">Рост объема дублированного кода. Нужно меньше писателей, больше редакторов.</p>
+                        </div>
+                    </div>
+
+                    <p class="text-lg text-black/70 max-w-3xl border-l border-[#f5a623] pl-6">
+                        Команды из 6–8 ролей сжимаются до 1–2. Если ты просто «хороший разработчик» без AI‑паттернов в продакшене — ты в той части списка, которую сократят первой.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 border-b border-black/10 bg-black/5 fade-in-section">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-2 text-black/20 font-display text-6xl">03</div>
+                <div class="md:col-span-10">
+                    <h2 class="font-display text-4xl md:text-5xl uppercase mb-8 tracking-tight text-[#0a0a0f]">
+                        Тех, кто остаётся, объединяет одно: <br>
+                        <span class="text-[#f5a623]">они не пишут код — они управляют результатом.</span>
+                    </h2>
+
+                    <div class="max-w-3xl font-mono text-sm md:text-base text-black/60">
+                        <p class="mb-6">
+                            Сокращения не означают, что разработчики больше не нужны. Они говорят о том, что ценность сместилась. «Просто писать код руками» обесценивается. Управлять AI как инженерным инструментом, контролировать качество, решать бизнес‑задачи — теперь за это платят больше и за это оставляют.
+                        </p>
+                        <p class="mb-6">
+                            У тебя как у мидла или сеньора уже есть то, чего нет у «AI‑энтузиастов»: архитектурное мышление, понимание систем и способность отличить «работает в демо» от «работает в проде».
+                        </p>
+                        <p class="text-[#0a0a0f] border border-[#f5a623]/30 bg-[#f5a623]/5 p-6 inline-block">
+                            Осталось достроить правильный подход к работе с AI — и ты не в зоне риска, а в зоне роста.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 border-b border-black/10 fade-in-section">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-2 text-black/20 font-display text-6xl">04</div>
+                <div class="md:col-span-10">
+                    <h2 class="font-display text-4xl md:text-5xl uppercase mb-16 tracking-tight">
+                        Два живых кейса
+                    </h2>
+
+                    <div class="space-y-0">
+                        <div class="border-t border-black/10 py-8 group hover:bg-black/5 transition-colors duration-300 px-2">
+                            <div class="flex flex-col md:flex-row gap-6 md:items-start">
+                                <div class="text-[#f5a623] font-bold text-xl shrink-0">[CASE_01]</div>
+                                <div>
+                                    <h3 class="font-display text-2xl uppercase mb-2">Рефакторинг легаси за часы, а не за месяцы</h3>
+                                    <p class="text-black/50 font-mono text-sm mb-4">Вживую: переносим реальный проект с устаревшего фреймворка на современный. Навык, который экономит компании месяцы бюджета.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-black/10 py-8 group hover:bg-black/5 transition-colors duration-300 px-2">
+                            <div class="flex flex-col md:flex-row gap-6 md:items-start">
+                                <div class="text-[#f5a623] font-bold text-xl shrink-0">[CASE_02]</div>
+                                <div>
+                                    <h3 class="font-display text-2xl uppercase mb-2">Полноценная CRM за 30 минут</h3>
+                                    <p class="text-black/50 font-mono text-sm mb-4">Берём реальный запрос и разворачиваем рабочую CRM в прямом эфире. Разработчик, который превращает бизнес‑задачу в продукт за дни — ключевой человек в команде.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-b border-black/10 py-8 group hover:bg-black/5 transition-colors duration-300 px-2">
+                            <div class="flex flex-col md:flex-row gap-6 md:items-start">
+                                <div class="text-[#f5a623] font-bold text-xl shrink-0">[SKILLS]</div>
+                                <div>
+                                    <h3 class="font-display text-2xl uppercase mb-2">Навыки защиты от сокращений</h3>
+                                    <p class="text-black/50 font-mono text-sm mb-4">Конкретный разбор для вашего стека</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 border-b border-black/10 fade-in-section">
+            <div class="grid md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-2 text-black/20 font-display text-6xl">05</div>
+                <div class="md:col-span-10">
+                    <h2 class="font-display text-4xl md:text-5xl uppercase tracking-tight">Спикеры</h2>
+                    <p class="mt-4 text-black/40 max-w-2xl">
+                        Люди, которые нанимают, сокращают и строят команды — и видят своими глазами, по каким критериям принимаются эти решения.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-black/10 border border-black/10">
+                <div class="bg-[#f5f5f0] p-8 hover:bg-black/5 transition-all group">
+                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">MO</div>
+                    <h4 class="font-display uppercase text-xl mb-1">Миша Овчинников</h4>
+                    <div class="text-xs text-[#f5a623] mb-3 uppercase tracking-wider">Google</div>
+                    <p class="text-black/40 text-xs">Staff Software Engineer, distributed systems</p>
+                </div>
+
+                <div class="bg-[#f5f5f0] p-8 hover:bg-black/5 transition-all group">
+                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">NB</div>
+                    <h4 class="font-display uppercase text-xl mb-1">Николай Барышников</h4>
+                    <div class="text-xs text-[#f5a623] mb-3 uppercase tracking-wider">Yandex</div>
+                    <p class="text-black/40 text-xs">Engineering Manager, ML Infrastructure</p>
+                </div>
+
+                <div class="bg-[#f5f5f0] p-8 hover:bg-black/5 transition-all group">
+                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">DP</div>
+                    <h4 class="font-display uppercase text-xl mb-1">Даня Пилипенко</h4>
+                    <div class="text-xs text-[#f5a623] mb-3 uppercase tracking-wider">Tinkoff</div>
+                    <p class="text-black/40 text-xs">Principal Engineer, Platform</p>
+                </div>
+
+                <div class="bg-[#f5f5f0] p-8 hover:bg-black/5 transition-all group">
+                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">DK</div>
+                    <h4 class="font-display uppercase text-xl mb-1">Дмитрий Крутов</h4>
+                    <div class="text-xs text-[#f5a623] mb-3 uppercase tracking-wider">Skillbox</div>
+                    <p class="text-black/40 text-xs">Founder. Строит и сокращает команды.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="py-24 px-6 fade-in-section">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <div class="inline-block border border-[#f5a623] text-[#f5a623] px-4 py-1 text-sm mb-6 uppercase tracking-widest">
+                        <span class="blink mr-2">●</span>Live Event
+                    </div>
+                    <h2 class="font-display text-5xl md:text-7xl uppercase mb-6">15 Февраля <span class="text-black/20">19:00</span></h2>
+                    <p class="text-black/50 max-w-xl mx-auto">
+                        Роли фиксируются до того, как рынок стабилизируется. Те, кто входят первыми, занимают позиции. Те, кто ждут — конкурируют за остатки.
+                    </p>
+                </div>
+
+                <div id="form-container" class="bg-black/5 p-8 md:p-12 border border-black/10">
+                    <form id="signup-form" class="space-y-8">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-black/40 mb-2">Имя</label>
+                            <input type="text" required class="w-full bg-transparent border-b border-black/20 py-3 text-xl text-[#0a0a0f] focus:outline-none focus:border-[#f5a623] transition-colors font-display uppercase placeholder-black/20" placeholder="Ваше имя">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-black/40 mb-2">Email</label>
+                            <input type="email" required class="w-full bg-transparent border-b border-black/20 py-3 text-xl text-[#0a0a0f] focus:outline-none focus:border-[#f5a623] transition-colors font-mono placeholder-black/20" placeholder="your@email.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-black/40 mb-2">Стек / Роль <span class="text-black/15">(Необязательно)</span></label>
+                            <input type="text" class="w-full bg-transparent border-b border-black/20 py-3 text-xl text-[#0a0a0f] focus:outline-none focus:border-[#f5a623] transition-colors font-display uppercase placeholder-black/20" placeholder="Ex: JAVA SENIOR">
+                        </div>
+
+                        <div class="pt-6">
+                            <button type="submit" class="w-full bg-[#f5a623] text-[#0a0a0f] font-display text-2xl uppercase py-5 hover:bg-[#0a0a0f] hover:text-[#f5f5f0] transition-all duration-300 relative overflow-hidden">
+                                Зарезервировать место
+                            </button>
+                            <p class="text-center text-xs text-black/30 mt-4 font-mono">
+                                Бесплатно. После регистрации пришлём ссылку и чеклист вопросов, которые стоит принести.
+                            </p>
+                        </div>
+                    </form>
+
+                    <div id="success-message" class="hidden text-center py-12">
+                        <div class="text-[#f5a623] text-6xl mb-6">✓</div>
+                        <h3 class="font-display text-4xl uppercase mb-4">Место зарезервировано</h3>
+                        <p class="text-black/50 mb-8">Мы отправили подтверждение и материалы на вашу почту.</p>
+                        <div class="p-4 border border-black/10 bg-black/5 font-mono text-sm text-left inline-block">
+                            &gt; STATUS: CONFIRMED<br>
+                            &gt; CHECKLIST: SENT<br>
+                            &gt; WAITING FOR: 15 FEB
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-12 border-t border-black/10 text-center text-black/15 text-xs font-mono uppercase">
+            © 2024 Engineering Future Series. All rights reserved.<br>
+            Design: System_V1
+        </footer>
+
+    </main>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headline = document.getElementById('hero-headline');
+            if (headline) {
+                const lines = headline.innerHTML.split(/<br[^>]*>/i);
+                headline.innerHTML = '';
+                let wordIndex = 0;
+                lines.forEach((line, lineIdx) => {
+                    const words = line.trim().split(/\s+/).filter(Boolean);
+                    words.forEach((word, i) => {
+                        const span = document.createElement('span');
+                        span.textContent = word;
+                        span.style.transitionDelay = `${wordIndex * 60}ms`;
+                        headline.appendChild(span);
+                        if (i < words.length - 1) headline.appendChild(document.createTextNode(' '));
+                        setTimeout(() => span.classList.add('visible'), 100);
+                        wordIndex++;
+                    });
+                    if (lineIdx < lines.length - 1) headline.appendChild(document.createElement('br'));
+                });
+            }
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const suffix = counter.getAttribute('data-suffix') || '';
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current) + suffix;
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target + suffix;
+                            }
+                        };
+                        updateCounter();
+                        counter.classList.remove('counter');
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+        const seatsEl = document.getElementById('seats-count');
+        if (seatsEl) {
+            let seats = 42;
+            setInterval(() => {
+                if (seats > 12 && Math.random() > 0.7) {
+                    seats--;
+                    seatsEl.innerText = seats;
+                    seatsEl.style.color = '#0a0a0f';
+                    setTimeout(() => { seatsEl.style.color = ''; }, 200);
+                }
+            }, 8000);
+        }
+
+        const form = document.getElementById('signup-form');
+        const successMsg = document.getElementById('success-message');
+        if (form && successMsg) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                form.style.display = 'none';
+                successMsg.classList.remove('hidden');
+                successMsg.classList.add('fade-in-section', 'is-visible');
+            });
+        }
+    </script>
+
+</body>
+</html>
