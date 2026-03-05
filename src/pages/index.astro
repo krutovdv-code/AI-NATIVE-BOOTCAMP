@@ -1,5 +1,6 @@
 ---
-// Первый лендинг — AI & Engineering Future Webinar (на основе webinar-landing)
+// Первый лендинг — AI & Engineering Future Webinar
+// Синхронизировано с: webinar-landing (2).html
 ---
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Condensed:wght@700;800;900&display=swap&display=swap" rel="stylesheet">
 
     <script is:inline>
         tailwind.config = {
@@ -102,6 +103,19 @@
             50% { opacity: 0; }
         }
 
+        .input-underline {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: #0a0a0f;
+            transition: border-color 0.3s ease;
+        }
+        
+        .input-underline:focus {
+            outline: none;
+            border-bottom: 1px solid #f5a623;
+        }
+
         .font-display, h1, h2, h3, h4 {
             font-variant-numeric: tabular-nums;
             font-feature-settings: "tnum" 1;
@@ -110,11 +124,12 @@
 </head>
 <body class="font-mono text-text">
 
+    <!-- NAV -->
     <div class="fixed top-0 left-0 w-full z-50 border-b border-black/10 bg-[#f5f5f0]/95 backdrop-blur-sm">
         <div class="max-w-[1440px] mx-auto px-6 h-12 flex items-center justify-between text-xs tracking-widest uppercase">
             <div class="flex items-center gap-2">
                 <span class="w-2 h-2 bg-[#f5a623] pulse-dot inline-block"></span>
-                <img src="data:image/jpeg;base64,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" alt="Nation AI" class="h-6 w-auto brightness-0"></div>
+                <img src="data:image/jpeg;base64,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" alt="Nation AI" class="h-6 w-auto"></div>
             <div class="hidden md:flex gap-8">
                 <span>MSK 19:00</span>
                 <span>// FEB 15</span>
@@ -137,7 +152,7 @@
                 <h1 class="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] uppercase tracking-tighter mb-12 reveal-text" id="hero-headline">
                     Международный банк сократил 250 разработчиков за месяц.<br>
                     Ты следующий?<br>
-                    Или останешься?
+                    Или выбираешь остаться?
                 </h1>
                 
                 <div class="grid md:grid-cols-12 gap-8 border-l-2 border-[#f5a623] pl-6 md:pl-8 fade-in-section">
@@ -291,7 +306,7 @@
                 <div class="md:col-span-10">
                     <h2 class="font-display text-4xl md:text-5xl uppercase tracking-tight">Спикеры</h2>
                     <p class="mt-4 text-black/40 max-w-2xl">
-                        Люди, которые нанимают, сокращают и строят команды — и видят своими глазами, по каким критериям принимаются эти решения.
+                        Люди, которые нанимают, сокращают, строят команды и видят своими глазами, по каким критериям принимаются эти решения.
                     </p>
                 </div>
             </div>
@@ -305,21 +320,21 @@
                 </div>
 
                 <div class="bg-[#f5f5f0] p-8 hover:bg-black/5 transition-all group">
-                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">NB</div>
+                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">НБ</div>
                     <h4 class="font-display uppercase text-xl mb-1">Николай Барышников</h4>
                     <div class="text-xs text-[#f5a623] mb-3 uppercase tracking-wider">Yandex</div>
                     <p class="text-black/40 text-xs">Engineering Manager, ML Infrastructure</p>
                 </div>
 
                 <div class="bg-[#f5f5f0] p-8 hover:bg-black/5 transition-all group">
-                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">DP</div>
+                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">ДП</div>
                     <h4 class="font-display uppercase text-xl mb-1">Даня Пилипенко</h4>
                     <div class="text-xs text-[#f5a623] mb-3 uppercase tracking-wider">Tinkoff</div>
                     <p class="text-black/40 text-xs">Principal Engineer, Platform</p>
                 </div>
 
                 <div class="bg-[#f5f5f0] p-8 hover:bg-black/5 transition-all group">
-                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">DK</div>
+                    <div class="w-16 h-16 bg-black/10 mb-6 flex items-center justify-center text-[#f5a623] font-display text-2xl group-hover:bg-[#0a0a0f] group-hover:text-[#f5f5f0] transition-colors">ДК</div>
                     <h4 class="font-display uppercase text-xl mb-1">Дмитрий Крутов</h4>
                     <div class="text-xs text-[#f5a623] mb-3 uppercase tracking-wider">Skillbox</div>
                     <p class="text-black/40 text-xs">Founder. Строит и сокращает команды.</p>
@@ -357,8 +372,9 @@
                         </div>
 
                         <div class="pt-6">
-                            <button type="submit" class="w-full bg-[#f5a623] text-[#0a0a0f] font-display text-2xl uppercase py-5 hover:bg-[#0a0a0f] hover:text-[#f5f5f0] transition-all duration-300 relative overflow-hidden">
-                                Зарезервировать место
+                            <button type="submit" class="w-full bg-[#f5a623] text-[#0a0a0f] font-display text-2xl uppercase py-5 hover:bg-[#0a0a0f] transition-all duration-300 relative overflow-hidden group">
+                                <span class="relative z-10 group-hover:text-[#f5f5f0] transition-colors duration-300">Зарезервировать место</span>
+                                <div class="absolute inset-0 bg-[#0a0a0f] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
                             </button>
                             <p class="text-center text-xs text-black/30 mt-4 font-mono">
                                 Бесплатно. После регистрации пришлём ссылку и чеклист вопросов, которые стоит принести.
@@ -381,40 +397,45 @@
         </section>
 
         <footer class="py-12 border-t border-black/10 text-center text-black/15 text-xs font-mono uppercase">
-            © 2024 Engineering Future Series. All rights reserved.<br>
+            © 2026 Engineering Future Series. All rights reserved.<br>
             Design: System_V1
         </footer>
 
     </main>
 
     <script is:inline>
+        // Hero headline word-by-word reveal
         document.addEventListener('DOMContentLoaded', () => {
             const headline = document.getElementById('hero-headline');
-            if (headline) {
-                const lines = headline.innerHTML.split(/<br[^>]*>/i);
-                headline.innerHTML = '';
-                let wordIndex = 0;
-                lines.forEach((line, lineIdx) => {
-                    const words = line.trim().split(/\s+/).filter(Boolean);
-                    words.forEach((word, i) => {
-                        const span = document.createElement('span');
-                        span.textContent = word;
-                        span.style.transitionDelay = `${wordIndex * 60}ms`;
-                        headline.appendChild(span);
-                        if (i < words.length - 1) headline.appendChild(document.createTextNode(' '));
-                        setTimeout(() => span.classList.add('visible'), 100);
-                        wordIndex++;
-                    });
-                    if (lineIdx < lines.length - 1) headline.appendChild(document.createElement('br'));
+            if (!headline) return;
+
+            const lines = headline.innerHTML.split(/<br[^>]*>/i);
+            headline.innerHTML = '';
+
+            let wordIndex = 0;
+            lines.forEach((line, lineIdx) => {
+                const words = line.trim().split(/\s+/).filter(Boolean);
+                words.forEach((word, i) => {
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    span.style.transitionDelay = `${wordIndex * 60}ms`;
+                    headline.appendChild(span);
+                    if (i < words.length - 1) headline.appendChild(document.createTextNode(' '));
+                    setTimeout(() => span.classList.add('visible'), 100);
+                    wordIndex++;
                 });
-            }
+                if (lineIdx < lines.length - 1) headline.appendChild(document.createElement('br'));
+            });
         });
 
+        // Scroll-triggered fade-in + counters
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
+
                     const counters = entry.target.querySelectorAll('.counter');
                     counters.forEach(counter => {
                         const target = +counter.getAttribute('data-target');
@@ -422,6 +443,7 @@
                         const duration = 2000;
                         const increment = target / (duration / 16);
                         let current = 0;
+
                         const updateCounter = () => {
                             current += increment;
                             if (current < target) {
@@ -440,6 +462,7 @@
 
         document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
 
+        // Seats countdown
         const seatsEl = document.getElementById('seats-count');
         if (seatsEl) {
             let seats = 42;
@@ -453,6 +476,7 @@
             }, 8000);
         }
 
+        // Form submit → success state
         const form = document.getElementById('signup-form');
         const successMsg = document.getElementById('success-message');
         if (form && successMsg) {
