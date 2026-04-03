@@ -160,7 +160,7 @@
                         <p class="text-lg md:text-xl text-black/70 leading-relaxed mb-8">
                             <span class="text-[#f5a623]">//</span> Живой разбор с ведущими инженерами Google, Яндекса и Сбера: какие AI‑навыки отделяют тех, кого оставляют, от тех, кого сокращают.
                         </p>
-                        <a href="#register" class="inline-block bg-[#f5a623] text-[#0a0a0f] px-8 py-4 font-display text-xl uppercase tracking-wide hover:bg-[#0a0a0f] hover:text-[#f5f5f0] transition-colors duration-300">
+                        <a href="#register" class="inline-block bg-[#f5a623] text-[#0a0a0f] px-8 py-4 font-display text-xl uppercase tracking-wide hover:bg-[#0a0a0f] hover:text-[#f5f5f0] transition-colors duration-300" onclick="event.preventDefault(); document.getElementById('booking-modal').classList.remove('hidden')">
                             Зарезервировать место
                         </a>
                     </div>
@@ -372,7 +372,7 @@
                         </div>
 
                         <div class="pt-6">
-                            <button type="submit" class="w-full bg-[#f5a623] text-[#0a0a0f] font-display text-2xl uppercase py-5 hover:bg-[#0a0a0f] transition-all duration-300 relative overflow-hidden group">
+                            <button type="button" onclick="document.getElementById('booking-modal').classList.remove('hidden')" class="w-full bg-[#f5a623] text-[#0a0a0f] font-display text-2xl uppercase py-5 hover:bg-[#0a0a0f] transition-all duration-300 relative overflow-hidden group">
                                 <span class="relative z-10 group-hover:text-[#f5f5f0] transition-colors duration-300">Зарезервировать место</span>
                                 <div class="absolute inset-0 bg-[#0a0a0f] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0"></div>
                             </button>
@@ -494,6 +494,14 @@
             });
         }
     </script>
+
+    <!-- Booking Widget Modal -->
+    <div id="booking-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70" onclick="if(event.target===this)this.classList.add('hidden')">
+        <div class="relative w-full max-w-lg mx-4">
+            <button onclick="document.getElementById('booking-modal').classList.add('hidden')" class="absolute -top-8 right-0 text-white text-3xl leading-none hover:text-[#f5a623]">&times;</button>
+            <script is:inline ao-number="3272" ao-widget-id="LxI59G41A0iq3YOio_yljw" ao-domain="content.scalingclub.ru" src="https://idx.xl.ru/site/widget/widget.min.js"></script>
+        </div>
+    </div>
 
 </body>
 </html>
