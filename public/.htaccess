@@ -1,0 +1,36 @@
+Options -Indexes
+DirectoryIndex index.html
+
+# Кодировка
+AddDefaultCharset UTF-8
+
+# Content-Type
+AddType text/html .html
+AddType text/css .css
+AddType application/javascript .js
+AddType image/svg+xml .svg
+AddType font/woff2 .woff2
+
+# HTTPS redirect
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Роутинг вложенных маршрутов
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /$1/index.html [L]
+
+# Gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript font/woff2
+</IfModule>
+
+# Кэширование
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
