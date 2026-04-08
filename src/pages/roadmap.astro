@@ -21,6 +21,9 @@
   header h1{font-size:clamp(40px,6vw,72px);line-height:.92;margin-bottom:20px}
   .accent{color:var(--accent)}
   header p{font-size:12px;line-height:1.7;color:var(--ink60);max-width:520px;border-left:2px solid var(--accent);padding-left:20px;margin:0 auto;text-align:left}
+  header .header-tg{border:none;padding-left:0;margin-top:20px;color:var(--ink60)}
+  header .header-tg a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
+  header .header-tg a:hover{color:var(--ink)}
 
   /* TREE */
   .tree{position:relative;padding:0 24px 60px}
@@ -88,6 +91,7 @@
 <header>
   <h1>Карта<br><span class="accent">навыков</span></h1>
   <p>Концепции и инструменты для разработчика, который хочет системно использовать AI в работе. От фундамента к практике.</p>
+  <p class="header-tg">Больше об AI в разработке из первых уст <a href="https://t.me/+OIPMMEXejeU5YTNi" target="_blank" rel="noopener">в нашем телеграме</a></p>
 </header>
 
 <div class="tree">
@@ -211,8 +215,8 @@ const nodeLinks={
   'hallucinations':[{url:'https://arxiv.org/abs/2311.05232',title:'https://arxiv.org/abs/2311.05232'}],
   'alignment':[{url:'https://synthesis.ai/2024/08/13/fine-tuning-llms-rlhf-lora-and-instruction-tuning/',title:'https://synthesis.ai/2024/08/13/fine-tuning-llms-rlhf-lora-and-instruction-tuning/'}],
   'sota':[{url:'https://llm-timeline.com',title:'https://llm-timeline.com'}],
-  'service-models':[{url:'https://www.promptingguide.ai/research/rag',title:'https://www.promptingguide.ai/research/rag'}],
-  'specialized':[{url:'https://platform.claude.com/docs/en/home',title:'https://platform.claude.com/docs/en/home'}],
+  'service-models':[{url:'https://www.pinecone.io/learn/series/rag/rerankers/',title:'https://www.pinecone.io/learn/series/rag/rerankers/'}],
+  'specialized':[{url:'https://www.koyeb.com/blog/best-multimodal-vision-models-in-2025',title:'https://www.koyeb.com/blog/best-multimodal-vision-models-in-2025'}],
   'local-models':[{url:'https://ollama.com',title:'https://ollama.com'}],
   'benchmarks':[{url:'https://lmarena.ai',title:'https://lmarena.ai'}],
   'token-cost':[{url:'https://platform.claude.com/docs/en/intro',title:'https://platform.claude.com/docs/en/intro'}],
